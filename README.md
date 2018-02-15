@@ -34,29 +34,31 @@ docker-compose -f examples/compose/single-container.yml up
 
 After a minute or so, you can access Ambari's Web UI at localhost:8080. Default User/PW is admin/admin.
 
-##Using DB Lytix™ functions, described in user manual and an example here:
+##Using DB Lytix™ functions
 
-# beeline -u jdbc:hive2://ambari-server.dev:10000/dblytix -n hive
-0: jdbc:hive2://ambari-server.dev:10000/> select fllinregr('mazdoo.tbllinregr','obsid','varid','num_val','');
-INFO  : Session is already open
-INFO  : Dag name: select fllinregr('maz...varid','num_val','')(Stage-1)
-INFO  : Status: Running (Executing on YARN cluster with App id application_1518679384209_0001)
-
---------------------------------------------------------------------------------
-        VERTICES      STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED
---------------------------------------------------------------------------------
-Map 1 ..........   SUCCEEDED      1          1        0        0       0       0
---------------------------------------------------------------------------------
-VERTICES: 01/01  [==========================>>] 100%  ELAPSED TIME: 315.07 s
---------------------------------------------------------------------------------
-+-------------+--+
-| analysisid  |
-+-------------+--+
-| FL495542    |
-+-------------+--+
-1 row selected (320.778 seconds)
-0: jdbc:hive2://ambari-server.dev:10000/>
-
+`DB Lytix™` functions are described in user manual and an example here:
+```
+ # beeline -u jdbc:hive2://ambari-server.dev:10000/dblytix -n hive
+  0: jdbc:hive2://ambari-server.dev:10000/> select fllinregr('mazdoo.tbllinregr','obsid','varid','num_val','');
+  INFO  : Session is already open
+  INFO  : Dag name: select fllinregr('maz...varid','num_val','')(Stage-1)
+  INFO  : Status: Running (Executing on YARN cluster with App id application_1518679384209_0001)
+  
+  --------------------------------------------------------------------------------
+          VERTICES      STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED
+  --------------------------------------------------------------------------------
+  Map 1 ..........   SUCCEEDED      1          1        0        0       0       0
+  --------------------------------------------------------------------------------
+  VERTICES: 01/01  [==========================>>] 100%  ELAPSED TIME: 315.07 s
+  --------------------------------------------------------------------------------
+  +-------------+--+
+  | analysisid  |
+  +-------------+--+
+  | FL495542    |
+  +-------------+--+
+  1 row selected (320.778 seconds)
+  0: jdbc:hive2://ambari-server.dev:10000/>
+```
 
 ##Helpful Hints:
 If you HDFS having issues starting up/not leaving SafeMode, it's probably because docker-compose is re-using containers from a previous run.
