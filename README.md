@@ -36,16 +36,19 @@ Then Ambari Web UI will be accessible at localhost:8080. Default User/PW is admi
 
 2.  To use the in-hadoop analytical functions, examples are in `DB Lytix™` user manual and an example is here:
 
-a.  copy the dblytix.license file to host machine & copy it to datanodes as:
+a.  copy the dblytix.license file to host machine & copy it to datanodes as usinf docker cp command as:
 ```
-[root@localhost ~]# docker ps
+See if license file is in host machine:
+	[root@localhost ~]# ls -ltr dblytix.license
+	-rw-r--r--. 1 root root 4 Jun 13 10:17 dblytix.license
+
+Find the container ID as:
+	 [root@localhost ~]# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                       NAMES
 1c0d588be4c0        dblytix/worker      "/bin/sh -c /start.sh"   19 minutes ago      Up 19 minutes       0.0.0.0:6667->6667/tcp...   compose_dn0.dev_1
 d7dc4feb2f0f        dblytix/ambari      "/bin/sh -c /start.sh"   19 minutes ago      Up 19 minutes       0.0.0.0:8080->8080/tcp...   compose_ambari-server.dev_1
-	
-[root@localhost ~]# ls -ltr dblytix.license
--rw-r--r--. 1 root root 4 Jun 13 10:17 dblytix.license
 
+Copy the license file to containers as:		
 [root@localhost ~]# docker cp dblytix.license 1c0d588be4c0:/etc/hadoop 
 [root@localhost ~]# docker cp dblytix.license d7dc4feb2f0f:/etc/hadoop 
 ```
