@@ -1,8 +1,9 @@
 # DBLytix-HDP-Docker
+DB Lytix™ is Fuzzy Logix’s flagship in-database analytics product, achieving high-performance analytics.  
 
-Fuzzy Logix DB Lytix™ is a very rich library of quantitative methods implemented for Library.  
-Built and tested with the latest version of [Docker](https://docs.docker.com/engine/installation/) on CentOS 7.  Older versions of Docker provided by docker-machine and/or Docker Toolbox will not work.
-The DB Lytix™ docker images are built from centos 6 by installing HDP & a pre-installed DB Lytix™, for more info about the [product](www.fuzzylogix.com) and support, please [let us know](www.fuzzylogix.com).
+The DB Lytix™ docker images are built on centos 6 base image and installed HDP & a pre-installed DB Lytix™, for more info about the [product](www.fuzzylogix.com) and support, please [let us know](www.fuzzylogix.com).
+
+Docker host machine used is CentOS 7 with the latest version of [Docker](https://docs.docker.com/engine/installation/).  Older versions of Docker provided by docker-machine and/or Docker Toolbox will not work.
 
 
 ## Project Goals:
@@ -15,7 +16,7 @@ Provide a docker environment to run/test DB Lytix™
 2.  To test DB Lytix™, get the user manual & a license file from [Fuzzy Logix](www.fuzzylogix.com) / info@fuzzylogix.com / HadoopTeam@fuzzylogix.com for license file & user manual
 
 
-## Steps to launch the Hadoop cluster:
+## Steps:
 1.  To run the cluster:
 ```
 git clone https://github.com/Fuzzy-Logix/DBLytix-HDP-Docker.git
@@ -33,19 +34,23 @@ docker-compose -f examples/compose/multi-container.yml up
 Then Ambari Web UI will be accessible at localhost:8080. Default User/PW is admin/admin.
 
 
-
 2.  To use the in-hadoop analytical functions, examples are in `DB Lytix™` user manual and an example is here:
 
 a.  copy the dblytix.license file to host machine & copy it to datanodes as:
 ```
-	docker cp <containerID>:/etc/hadoop 
-
+[root@localhost ~]# docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                       NAMES
+1c0d588be4c0        dblytix/worker      "/bin/sh -c /start.sh"   19 minutes ago      Up 19 minutes       0.0.0.0:6667->6667/tcp...   compose_dn0.dev_1
+d7dc4feb2f0f        dblytix/ambari      "/bin/sh -c /start.sh"   19 minutes ago      Up 19 minutes       0.0.0.0:8080->8080/tcp...   compose_ambari-server.dev_1
+	
+[root@localhost ~]# docker cp 1c0d588be4c0:/etc/hadoop 
+[root@localhost ~]# docker cp d7dc4feb2f0f:/etc/hadoop 
 ```
 
-b.  connect to hiveserver2 via odbc/jdbc/beeline:
+b.  connect to hiveserver2 via odbc/jdbc/beeline and run DB Lytix™ functions:
 ```
  # beeline -u jdbc:hive2://ambari-server.dev:10000/dblytix -n hive
-  0: jdbc:hive2://ambari-server.dev:10000/> select fllinregr('mazdoo.tbllinregr','obsid','varid','num_val','');
+  0: jdbc:hive2://ambari-server.dev:10000/> SELECT FLLinRegr('mazdoo.tbllinregr','obsid','varid','num_val','');
   INFO  : Session is already open
   INFO  : Dag name: select fllinregr('maz...varid','num_val','')(Stage-1)
   INFO  : Status: Running (Executing on YARN cluster with App id application_1518679384209_0001)
@@ -79,9 +84,9 @@ docker-compose -f examples/compose/multi-container.yml build
 
 A successful build looks like:
 ```
-docker-dblytix> docker images
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-dblytix/node            latest              cacb20b1b0d3        15 seconds ago      7.682 GB
+[root@localhost ~]# docker images
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+dblytix/worker          latest              cacb20b1b0d3        15 seconds ago      7.682 GB
 dblytix/ambari-server   latest              b0fad41dd49c        15 minutes ago      2.492 GB
 ```
 
