@@ -1,4 +1,4 @@
-# dblytix-hdp
+# DBLytix-HDP-Docker
 
 Fuzzy Logix DB Lytix™ is a very rich library of quantitative methods implemented for Library.  
 Built and tested with the latest version of [Docker](https://docs.docker.com/engine/installation/) on CentOS 7.  Older versions of Docker provided by docker-machine and/or Docker Toolbox will not work.
