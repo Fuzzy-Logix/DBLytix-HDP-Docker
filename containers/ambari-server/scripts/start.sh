@@ -2,6 +2,7 @@
 
 
 sleep 20
+ambari-agent start
 ambari-server start
 
 while true; do
