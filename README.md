@@ -3,7 +3,7 @@
 Fuzzy Logix DB Lytix™ is a very rich library of quantitative methods implemented for Library.
 Built and tested with the latest version of [Docker](https://docs.docker.com/engine/installation/) on CentOS 7. Older versions of Docker provided by docker-machine and/or Docker Toolbox will not work.
 
-For support, please [let us know](www.fuzzylogix.com)& would get in touch with you if need additional help.
+For support, please [let us know](www.fuzzylogix.com) & would get in touch with you if need additional help.
 
 
 ## Project Goals:
@@ -14,11 +14,7 @@ Provide a docker environment to run/test DB Lytix™
 ## Pre-requisits:
 1.  Install docker, docker-compose on host machine.
 	
-2.  Contact www.fuzzylogix.com / info@fuzzylogix.com / HadoopTeam@fuzzylogix.com for license file & user manual
-```
-To test DB Lytix™, get the user manual & a license file from Fuzzy Logix http://www.fuzzylogix.com
-
-```
+2.  To test DB Lytix™, get the user manual & a license file from [Fuzzy Logix](www.fuzzylogix.com) / info@fuzzylogix.com / HadoopTeam@fuzzylogix.com for license file & user manual
 
 
 ## Steps to launch the Hadoop cluster:
@@ -43,11 +39,10 @@ Then Ambari Web UI will be accessible at localhost:8080. Default User/PW is admi
 2.  To use the in-hadoop analytical functions, examples are in `DB Lytix™` user manual and an example is here:
 
 a.  copy the dblytix.license file to host machine & copy it to datanodes as:
-
-	```
+```
 	docker cp <containerID>:/etc/hadoop 
 
-	```
+```
 
 b.  connect to hiveserver2 via odbc/jdbc/beeline:
 ```
