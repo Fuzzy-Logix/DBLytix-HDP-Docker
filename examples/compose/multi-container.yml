@@ -1,15 +1,5 @@
 version: '3'
 services:
-  postgres.dev:
-    build:
-     context: ../../containers/postgres
-     args:
-      - AMBARI_DDL_URL=${AMBARI_DDL_URL}
-    image: dblytix/postgres
-    networks:
-     - dev
-    hostname: postgres
-    domainname: dev
   ambari-server.dev:
     build: 
       context: ../../containers/ambari-server

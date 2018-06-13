@@ -1,14 +1,12 @@
 # dblytix-hdp
 
-Fuzzy Logix DB Lytix™ is a very rich library of quantitative methods implemented for Library.
-Built and tested with the latest version of [Docker](https://docs.docker.com/engine/installation/) on CentOS 7. Older versions of Docker provided by docker-machine and/or Docker Toolbox will not work.
-
-For support, please [let us know](www.fuzzylogix.com) & would get in touch with you if need additional help.
+Fuzzy Logix DB Lytix™ is a very rich library of quantitative methods implemented for Library.  
+Built and tested with the latest version of [Docker](https://docs.docker.com/engine/installation/) on CentOS 7.  Older versions of Docker provided by docker-machine and/or Docker Toolbox will not work.
+The DB Lytix™ docker images are built from centos 6 by installing HDP & a pre-installed DB Lytix™, for more info about the [product](www.fuzzylogix.com) and support, please [let us know](www.fuzzylogix.com).
 
 
 ## Project Goals:
 Provide a docker environment to run/test DB Lytix™ 
-
 
 
 ## Pre-requisits:
@@ -70,8 +68,6 @@ b.  connect to hiveserver2 via odbc/jdbc/beeline:
 
 
 ## Appendix:
-These docker images are made  from [HDP](https://github.com/randerzander/docker-hdp) with pre-installed DB Lytix™, for more info about the [product](www.fuzzylogix.com):
-
 If want to customize by editing the Dockerfile, edit the files & build:
 ```
 docker-compose -f examples/compose/single-container.yml build
@@ -87,7 +83,6 @@ docker-dblytix> docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 dblytix/node            latest              cacb20b1b0d3        15 seconds ago      7.682 GB
 dblytix/ambari-server   latest              b0fad41dd49c        15 minutes ago      2.492 GB
-dblytix/postgres        latest              ad42250d5c8b        23 minutes ago      320.2 MB
 ```
 
 
