@@ -43,8 +43,11 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 1c0d588be4c0        dblytix/worker      "/bin/sh -c /start.sh"   19 minutes ago      Up 19 minutes       0.0.0.0:6667->6667/tcp...   compose_dn0.dev_1
 d7dc4feb2f0f        dblytix/ambari      "/bin/sh -c /start.sh"   19 minutes ago      Up 19 minutes       0.0.0.0:8080->8080/tcp...   compose_ambari-server.dev_1
 	
-[root@localhost ~]# docker cp 1c0d588be4c0:/etc/hadoop 
-[root@localhost ~]# docker cp d7dc4feb2f0f:/etc/hadoop 
+[root@localhost ~]# ls -ltr dblytix.license
+-rw-r--r--. 1 root root 4 Jun 13 10:17 dblytix.license
+
+[root@localhost ~]# docker cp dblytix.license 1c0d588be4c0:/etc/hadoop 
+[root@localhost ~]# docker cp dblytix.license d7dc4feb2f0f:/etc/hadoop 
 ```
 
 b.  connect to hiveserver2 via odbc/jdbc/beeline and run DB Lytix™ functions:
