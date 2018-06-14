@@ -99,4 +99,4 @@ By default it uses docker-bridge.  Possible to work with any docker network.
 Thus, can have container IP either as host/private/public & can work with odbc/jdbc/beeline hive connector.
 
 
-Fuzzy Logix reqularly releases the new products and publishes latest docker images, so to work on latest dblytix image, clear the previously pulled image present locally.
+Fuzzy Logix reqularly releases the new products and publishes latest docker images, so to work on latest dblytix image, clear the previously pulled image present locally, and get the latest images as in [step 1](https://github.com/Fuzzy-Logix/DBLytix-HDP-Docker#steps).
