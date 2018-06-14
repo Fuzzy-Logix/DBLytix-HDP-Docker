@@ -34,24 +34,24 @@ Then Ambari Web UI will be accessible at localhost:8080. Default User/PW is admi
 
 a.  copy the dblytix.license file to host machine & copy it to datanodes as usinf docker cp command as:
 ```
-See if license file is in host machine:
+See if you have put the license file in host machine:
 	[root@localhost ~]# ls -ltr dblytix.license
 	-rw-r--r--. 1 root root 4 Jun 13 10:17 dblytix.license
 
 Find the container ID as:
-	 [root@localhost ~]# docker ps
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                       NAMES
-1c0d588be4c0        dblytix/worker      "/bin/sh -c /start.sh"   19 minutes ago      Up 19 minutes       0.0.0.0:6667->6667/tcp...   compose_dn0.dev_1
-d7dc4feb2f0f        dblytix/ambari      "/bin/sh -c /start.sh"   19 minutes ago      Up 19 minutes       0.0.0.0:8080->8080/tcp...   compose_ambari-server.dev_1
+	[root@localhost ~]# docker ps
+	CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                       NAMES
+	1c0d588be4c0        dblytix/worker      "/bin/sh -c /start.sh"   19 minutes ago      Up 19 minutes       0.0.0.0:6667->6667/tcp...   compose_dn0.dev_1
+	d7dc4feb2f0f        dblytix/ambari      "/bin/sh -c /start.sh"   19 minutes ago      Up 19 minutes       0.0.0.0:8080->8080/tcp...   compose_ambari-server.dev_1
 
 Copy the license file to containers as:		
-[root@localhost ~]# docker cp dblytix.license 1c0d588be4c0:/etc/hadoop 
-[root@localhost ~]# docker cp dblytix.license d7dc4feb2f0f:/etc/hadoop 
+	[root@localhost ~]# docker cp dblytix.license 1c0d588be4c0:/etc/hadoop 
+	[root@localhost ~]# docker cp dblytix.license d7dc4feb2f0f:/etc/hadoop 
 ```
 
 b.  connect to hiveserver2 via odbc/jdbc/beeline and run DB Lytix™ functions:
 ```
-  To login to a node (also, can connect to HS2 from host/external machine provided the container IP is accessible & hive jdbc/odbc driver is intalled in that accessing machine):
+  To login to a node (also, can connect to HS2 from host or external machines as per docker network configured):
  # docker exec -it d7dc4feb2f0f /bin/bash
 
   Connect to HS2 via beeline:
