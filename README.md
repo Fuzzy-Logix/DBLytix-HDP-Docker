@@ -13,7 +13,7 @@ Provide a docker environment to run/test DB Lytix™
 ## Pre-requisits:
 1.  Install docker, docker-compose on host machine.
 	
-2.  To test DB Lytix™, get the user manual & a license file from [Fuzzy Logix](www.fuzzylogix.com) / info@fuzzylogix.com / HadoopTeam@fuzzylogix.com for license file & user manual
+2.  To test DB Lytix™, get the user manual & a license file from [Fuzzy Logix](http://www.fuzzylogix.com) for license file & user manual
 
 
 ## Steps:
