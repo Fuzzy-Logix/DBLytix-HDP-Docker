@@ -51,7 +51,13 @@ Copy the license file to containers as:
 
 b.  connect to hiveserver2 via odbc/jdbc/beeline and run DB Lytix™ functions:
 ```
+  To login to a node (also, can connect to HS2 from host/external machine provided the container IP is accessible & hive jdbc/odbc driver is intalled in that accessing machine):
+ # docker exec -it d7dc4feb2f0f /bin/bash
+
+  Connect to HS2 via beeline:
  # beeline -u jdbc:hive2://ambari-server.dev:10000/dblytix -n hive
+ 
+  Call DB Lytix™ functions as SQL/HQL:
   0: jdbc:hive2://ambari-server.dev:10000/> SELECT FLLinRegr('mazdoo.tbllinregr','obsid','varid','num_val','');
   INFO  : Session is already open
   INFO  : Dag name: select fllinregr('maz...varid','num_val','')(Stage-1)
