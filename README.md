@@ -22,9 +22,39 @@ Provide a docker environment to run/test DB Lytix™
 git clone https://github.com/Fuzzy-Logix/DBLytix-HDP-Docker.git
 ```
 
-If want to customize (add datanode / mount voulme / change docker network) edit the file multi-container.yml then start the containers as:
+If want to customize (add datanode / mount voulme / change docker network) edit the Dockerfile or multi-container.yml, to docker build:
+```
+docker-compose -f examples/compose/multi-container.yml build
+```
+
+This would show the docker images in host machine:
+```
+[root@localhost ~]# docker images
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+dblytix/worker          latest              cacb20b1b0d3        15 seconds ago      7.682 GB
+dblytix/ambari-server   latest              b0fad41dd49c        15 minutes ago      2.492 GB
+```
+
+To launch cluster, start docker container as:
 ```
 docker-compose -f examples/compose/multi-container.yml up
+```
+
+Find that containers are running:
+```
+[root@localhost ~]# docker ps
+CONTAINER ID	IMAGE           COMMAND                  CREATED       	STATUS         PORTS                       NAMES
+1c0d588be4c0    dblytix/worker  "/bin/sh -c /start.sh"   19 minutes ago Up 19 minutes  0.0.0.0:6667->6667/tcp...   compose_dn0.dev_1
+d7dc4feb2f0f    dblytix/ambari	"/bin/sh -c /start.sh"   19 minutes ago Up 19 minutes  0.0.0.0:8080->8080/tcp...   compose_ambari-server.dev_1
+```
+
+Check if the service 'ambari-server' is running:
+```
+[root@localhost ~]# docker exec -it d7dc4feb2f0f /bin/bash
+[root@ambari-server /]# ambari-server status
+
+if not already running , start the service:
+[root@ambari-server /]# ambari-server start
 ```
 
 Then Ambari Web UI will be accessible at localhost:8080. Default User/PW is admin/admin.
@@ -45,8 +75,8 @@ CONTAINER ID	IMAGE           COMMAND                  CREATED       	STATUS     
 d7dc4feb2f0f    dblytix/ambari	"/bin/sh -c /start.sh"   19 minutes ago Up 19 minutes  0.0.0.0:8080->8080/tcp...   compose_ambari-server.dev_1
 
 Copy the license file to containers as:		
-	[root@localhost ~]# docker cp dblytix.license 1c0d588be4c0:/etc/hadoop 
-	[root@localhost ~]# docker cp dblytix.license d7dc4feb2f0f:/etc/hadoop 
+[root@localhost ~]# docker cp dblytix.license 1c0d588be4c0:/etc/hadoop 
+[root@localhost ~]# docker cp dblytix.license d7dc4feb2f0f:/etc/hadoop 
 ```
 
 b.  connect to hiveserver2 via odbc/jdbc/beeline and run DB Lytix™ functions:
@@ -73,7 +103,7 @@ b.  connect to hiveserver2 via odbc/jdbc/beeline and run DB Lytix™ functions:
   +-------------+--+
   | analysisid  |
   +-------------+--+
-  | FL495542    |
+  | FL495542    | 
   +-------------+--+
   1 row selected (320.778 seconds)
   0: jdbc:hive2://ambari-server.dev:10000/>
@@ -81,22 +111,14 @@ b.  connect to hiveserver2 via odbc/jdbc/beeline and run DB Lytix™ functions:
 
 
 ## Appendix:
-If want to customize by editing the Dockerfile, edit the files & build:
-```
-docker-compose -f examples/compose/multi-container.yml build
-```
-
-A successful build looks like:
-```
-[root@localhost ~]# docker images
-REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
-dblytix/worker          latest              cacb20b1b0d3        15 seconds ago      7.682 GB
-dblytix/ambari-server   latest              b0fad41dd49c        15 minutes ago      2.492 GB
-```
-
 
 By default it uses docker-bridge.  Possible to work with any docker network.  
 Thus, can have container IP either as host/private/public & can work with odbc/jdbc/beeline hive connector.
 
 
-Fuzzy Logix reqularly releases the new products and publishes latest docker images, so to work on latest dblytix image, clear the previously pulled image present locally, and get the latest images as in [step 1](https://github.com/Fuzzy-Logix/DBLytix-HDP-Docker#steps).
+Fuzzy Logix reqularly releases the new products and publishes latest docker images, so to work on latest dblytix image, clear the previously pulled image present locally: 
+```
+[root@localhost ~]# docker rmi 1c0d588be4c0
+[root@localhost ~]# docker rmi b0fad41dd49c
+```
+Then get the latest images as in [step 1](https://github.com/Fuzzy-Logix/DBLytix-HDP-Docker#steps) and continue experiment with DB Lytix™. 
