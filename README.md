@@ -55,6 +55,11 @@ Check if the service 'ambari-server' is running:
 
 if not already running , start the service:
 [root@ambari-server /]# ambari-server start
+
+Also, need the service 'ambari-agent' to be running on all nodes,
+check the status of the service on each node & start if needed:
+[root@ambari-server /]# ambari-agent status
+[root@ambari-server /]# ambari-agent start
 ```
 
 Then Ambari Web UI will be accessible at localhost:8080. Default User/PW is admin/admin.
