@@ -1,7 +1,7 @@
 # DBLytix-HDP-Docker
 DB Lytix™ is Fuzzy Logix’s flagship in-database analytics product, achieving high-performance analytics.  
 
-The DB Lytix™ docker images are built on centos 6 base image and installed HDP & a pre-installed DB Lytix™, for more info about the [product](www.fuzzylogix.com) and support, please [let us know](www.fuzzylogix.com).
+The DB Lytix™ docker images are built on centos 6 base image and installed HDP & a pre-installed DB Lytix™, for more info about the [product](http://www.fuzzylogix.com) and support, please [let us know](http://www.fuzzylogix.com).
 
 Docker host machine used is CentOS 7 with the latest version of [Docker](https://docs.docker.com/engine/installation/).  Older versions of Docker provided by docker-machine and/or Docker Toolbox will not work.
 
@@ -11,7 +11,7 @@ Provide a docker environment to run/test DB Lytix™
 
 
 ## Pre-requisits:
-1.  Install docker, docker-compose on host machine.
+1.  Install [docker](https://docs.docker.com/install/), [docker-compose](https://docs.docker.com/compose/install/) on host machine.
 	
 2.  To test DB Lytix™, get the user manual & a license file from [Fuzzy Logix](http://www.fuzzylogix.com) for license file & user manual
 
@@ -121,4 +121,4 @@ Fuzzy Logix reqularly releases the new products and publishes latest docker imag
 [root@localhost ~]# docker rmi 1c0d588be4c0
 [root@localhost ~]# docker rmi b0fad41dd49c
 ```
-Then get the latest images as in [step 1](https://github.com/Fuzzy-Logix/DBLytix-HDP-Docker#steps) and continue experiment with DB Lytix™. 
+Then get the latest images as in [step 1](https://github.com/Fuzzy-Logix/DBLytix-HDP-Docker#steps) and continue experimenting with DB Lytix™. 
