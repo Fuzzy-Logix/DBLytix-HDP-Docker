@@ -22,7 +22,7 @@ Provide a docker environment to run/test DB Lytix™
 git clone https://github.com/Fuzzy-Logix/DBLytix-HDP-Docker.git
 ```
 
-If want to customize (add datanode / mount voulme / change docker network) edit the Dockerfile or multi-container.yml, to docker build:
+Build docker images as:
 ```
 docker-compose -f examples/compose/multi-container.yml build
 ```
@@ -116,6 +116,8 @@ b.  connect to hiveserver2 via odbc/jdbc/beeline and run DB Lytix™ functions:
 
 
 ## Appendix:
+
+Can customize (add datanode / mount voulme / change docker network) via Dockerfile or multi-container.yml file. 
 
 By default it uses docker-bridge.  Possible to work with any docker network.  
 Thus, can have container IP either as host/private/public & can work with odbc/jdbc/beeline hive connector.

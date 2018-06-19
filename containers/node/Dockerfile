@@ -1,3 +1,4 @@
 FROM dblytix/worker
 ADD scripts/start.sh /start.sh
-CMD /start.sh
+RUN ["chmod" , "+x" , "/start.sh"]
+ENTRYPOINT ["sh", "/start.sh"]
